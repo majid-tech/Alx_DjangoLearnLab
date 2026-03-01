@@ -1,7 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 from .models import Library
 from .models import Book
+from django.contrib.auth import login
+from .forms import RegisterForm
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Automatically logs user in
+            return redirect('login')
+    else:
+        form = RegisterForm()
+
+    return render(request, 'relationship_app/register.html', {'form': form})
 
 # Function-based view
 def book_list(request):
