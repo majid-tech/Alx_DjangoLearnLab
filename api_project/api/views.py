@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from .models import Book
-from serializers import BookSerializer
+from .serializers import BookSerializer
 from .views import BookList
 from django.urls import path
 # Create your views here.
