@@ -7,8 +7,8 @@ router.register(r'books_all', BookViewSet, basename='book_all')
 
 
 urlpatterns = [
-    # Route for the BookList view (ListAPIView)
-    path('books/', BookViewSet.as_view(), name='book-list'),
+    # Route for list/create on BookViewSet
+    path('books/', BookViewSet.as_view({'get': 'list', 'post': 'create'}), name='book-list'),
 
     # Include the router URLs for BookViewSet (all CRUD operations)
     path('', include(router.urls)),  # This includes all routes registered with the router
