@@ -131,5 +131,6 @@ REST_FRAMEWORK = {
     # clients must send header: Authorization: Token <token>
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.permissions.IsAuthenticated',
     ],
 }
